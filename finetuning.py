@@ -6,6 +6,8 @@ checkpoint = "gpt2"
 tokenizer = GPT2Tokenizer.from_pretrained(checkpoint)
 model = GPT2LMHeadModel.from_pretrained(checkpoint)
 
+tokenizer.pad_token_id = tokenizer.eos_token_id
+
 def load_data(file_path,tokenizer):
     return TextDataset(
         tokenizer = tokenizer,
