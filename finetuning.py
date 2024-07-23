@@ -1,5 +1,5 @@
 from transformers import GPT2Tokenizer,GPT2LMHeadModel,TextDataset,DataCollatorForLanguageModeling,TrainingArguments,Trainer
-
+import accelerate
 
 checkpoint = "gpt2"
 
