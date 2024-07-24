@@ -1,6 +1,6 @@
 # Projet de Génération de Titres pour Articles Scientifiques
 
-Ce projet consiste à générer des titres pour des articles scientifiques en utilisant un modèle GPT-2 fine-tuné. Le processus se divise en plusieurs étapes :
+Ce projet consiste à générer des titres pour des articles scientifiques provenant d'ArXiv en utilisant un modèle GPT-2 fine-tuné. Le processus se divise en plusieurs étapes :
 
 1. **Web Scraping des Titres d'Articles**
 2. **Nettoyage des Données**
