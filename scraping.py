@@ -1,5 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
+import pandas as pd
+from clean_data import clean_title
 
 
 
@@ -12,4 +14,15 @@ def fetch_arxiv_titles(category="cs.AI",max_results = 2000):
     titles = [entry.title.text for entry in soup.find_all("entry")]
     return titles
 
+
+
+# scraping arxiv
+titles = fetch_arxiv_titles()
+df = pd.DataFrame(titles,columns=["titles"])
+df.to_csv("arxiv_titles.csv",index=False)
+
+# clean data
+df = pd.read_csv("arxiv_titles.csv")
+df['titles'] = df['titles'].apply(clean_title)
+df.to_csv('cleaned_arxiv_titles.csv', index=False)
 
