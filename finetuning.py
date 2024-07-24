@@ -1,7 +1,7 @@
 from transformers import GPT2Tokenizer,GPT2LMHeadModel,TextDataset,DataCollatorForLanguageModeling,TrainingArguments,Trainer
 import accelerate
 
-checkpoint = "gpt2"
+checkpoint = "gpt2-large"
 
 tokenizer = GPT2Tokenizer.from_pretrained(checkpoint)
 model = GPT2LMHeadModel.from_pretrained(checkpoint)
@@ -30,7 +30,7 @@ data_collator = load_data_collator(tokenizer)
 training_arguments = TrainingArguments(
     output_dir="./results",
     overwrite_output_dir=True,
-    num_train_epochs=3,
+    num_train_epochs=12,
     per_device_train_batch_size=4,
     save_steps=10_000,
     save_total_limit=2
@@ -46,3 +46,10 @@ trainer = Trainer(
 
 
 trainer.train()
+
+# save model and tokenizer
+output_dir = "./fine_tuned_gpt2_generateTitle"
+model.save_pretrained(output_dir)
+tokenizer.save_pretrained(output_dir)
+print("Modèle et tokenizer sauvegardés avec succès.")
+
